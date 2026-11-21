@@ -200,6 +200,8 @@ ai-video-editing-skills/
 │   ├── overlay_kit.py                    # libass / HarfBuzz Devanagari banners & captions
 │   ├── music_kit.py                      # Background music mixing & ducking
 │   ├── audio_lab.py                      # 120+ copyright-free BGM (60) & SFX (60) generator
+│   ├── motion_gfx.py                     # Animated lower-thirds & stat counters (cubic easing)
+│   ├── smart_editor.py                   # 1-command auto-editor for ANY user video (vlogs/tutorials)
 │   ├── send_telegram.py                  # Automated Telegram delivery
 │   ├── youtube_upload.py                 # Official YouTube Data API v3 uploader
 │   ├── template_kit.py                   # 4 ready-made 9:16 & 16:9 cinema templates
