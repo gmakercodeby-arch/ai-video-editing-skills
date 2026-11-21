@@ -176,9 +176,10 @@ This pipeline adapts automatically to your hardware. Even a standard laptop runs
   - `template_crimson_horror.png` (9:16 Horror / Zombie / Monster)
   - `template_cyan_scifi.png` (9:16 Sci-Fi / Cyberpunk HUD)
   - `template_cinema_16x9.png` (16:9 Long-Form Filmy Nest matte-black bar)
-- **100% Copyright-Free Procedural 48kHz Audio Engine (`pipeline/music_kit.py`):**
-  - **4 BGM Moods:** `dark_thriller`, `horror_suspense`, `emotional_drama`, `action_hype`
-  - **6 Designed SFX:** `boom`, `whoosh`, `riser`, `heartbeat`, `glitch_hit`, `bell_reveal`
+- **120+ 100% Copyright-Free Procedural 48kHz Audio Lab (`pipeline/audio_lab.py` + `pipeline/music_kit.py`):**
+  - **60 BGM Presets** across 12 genres (`thriller`, `horror`, `scifi`, `crime_noir`, `emotional`, `action`, `mystery`, `survival`, `documentary`, `anime_epic`, `suspense`, `space_void` × 5 variations each!)
+  - **60 Designed SFX Presets** across 6 categories (`boom_impact`, `whoosh_cut`, `riser_tension`, `heartbeat`, `glitch_hit`, `bell_reveal` × 10 variations each!)
+  - Generate the entire **120-track local audio pack** in 1 command: `python pipeline/audio_lab.py --build-pack assets/audio_lab` (zero GitHub repo bloat, 0% copyright claim risk!)
 - **Curated Stock Audio & Open-Source Best Practices:** Includes verified free audio sources (YouTube Audio Library, Pixabay, Mixkit, Freesound CC0, Incompetech) + distilled patterns from `NarratoAI`, `ClipsAI`, `Remotion Shorts`, and `MoneyPrinterTurbo`.
 
 ---
@@ -198,6 +199,7 @@ ai-video-editing-skills/
 │   ├── shot_guard.py                     # PySceneDetect + 3-frame probe + word cue cuts
 │   ├── overlay_kit.py                    # libass / HarfBuzz Devanagari banners & captions
 │   ├── music_kit.py                      # Background music mixing & ducking
+│   ├── audio_lab.py                      # 120+ copyright-free BGM (60) & SFX (60) generator
 │   ├── send_telegram.py                  # Automated Telegram delivery
 │   ├── youtube_upload.py                 # Official YouTube Data API v3 uploader
 │   ├── template_kit.py                   # 4 ready-made 9:16 & 16:9 cinema templates
