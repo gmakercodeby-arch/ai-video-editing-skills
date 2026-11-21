@@ -13,4 +13,6 @@ __pycache__/
 *.json
 .env
 telegram_config.json
+client_secrets.json
+yt_token.json
 !.env.example

@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <!-- Animated Wave Header Banner -->
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,45:0f4c5c,100:e36414&height=230&section=header&text=AI%20Video%20Editing%20Skills&fontSize=44&fontColor=ffffff&fontAlignY=38&desc=Viral%20Hindi%20Recap%20%26%20Production%20V3%20Pipeline&descAlignY=62&descSize=18&animation=fadeIn" alt="AI Video Editing Skills Banner" />
