@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
-"""music_kit.py - approved dark-thriller BGM + designed SFX (unchanged sound, reusable)."""
+"""
+music_kit.py - 100% Copyright-Free Procedural 48kHz Stereo Cinema BGM & SFX Engine.
+Supports 4 BGM moods:
+  - 'dark_thriller'   : Hans-Zimmer style dark D-minor pulse + cello drone (default)
+  - 'horror_suspense' : Deep sub-octave drone + eerie tritone tension + heartbeat
+  - 'emotional_drama' : Warm minor-key orchestral pad swells (sad/twist endings)
+  - 'action_hype'     : Fast 132 BPM driving synth-bass pulse for high-energy cuts
+Supports 6 Designed SFX:
+  - 'boom', 'whoosh', 'riser', 'heartbeat', 'glitch_hit', 'bell_reveal'
+"""
 import math
-
 import numpy as np
 from scipy.io import wavfile
 from scipy.signal import butter, lfilter
@@ -17,13 +25,43 @@ def _bp(sig, low, high, sr, order=2):
     return lfilter(b, a, sig)
 
 
-def generate_cinematic_bgm_and_sfx(total_dur, sfx_events, out_wav, seed=77, bpm=118):
+MOOD_CHORDS = {
+    "dark_thriller": (118, [
+        [73.42, 110.0, 146.83, 174.61],   # Dm
+        [58.27, 116.54, 146.83, 174.61],  # Bb
+        [49.00, 98.00, 146.83, 174.61],   # Gm
+        [55.00, 110.0, 138.59, 164.81],   # A
+    ]),
+    "horror_suspense": (92, [
+        [65.41, 92.50, 130.81, 155.56],   # Cm(b5) eerie tritone
+        [61.74, 92.50, 123.47, 146.83],   # Bdim tension
+        [55.00, 82.41, 116.54, 155.56],   # Dark minor cluster
+        [65.41, 98.00, 138.59, 155.56],
+    ]),
+    "emotional_drama": (84, [
+        [110.0, 164.81, 220.0, 261.63],   # Am
+        [87.31, 130.81, 174.61, 220.0],   # F
+        [130.81, 196.0, 261.63, 329.63],  # C
+        [98.00, 146.83, 196.0, 246.94],   # G
+    ]),
+    "action_hype": (132, [
+        [82.41, 123.47, 164.81, 196.0],   # Em
+        [65.41, 98.00, 130.81, 196.0],    # C
+        [73.42, 110.0, 146.83, 220.0],    # D
+        [61.74, 92.50, 123.47, 185.0],    # Bm
+    ]),
+}
+
+
+def generate_cinematic_bgm_and_sfx(total_dur, sfx_events, out_wav, seed=77, bpm=None, mood="dark_thriller"):
     sr = 48000
     n = int(math.ceil(total_dur * sr))
     t = np.arange(n, dtype=np.float64) / sr
     rng = np.random.default_rng(seed)
-    chords = [[73.42, 110.0, 146.83, 174.61], [58.27, 116.54, 146.83, 174.61],
-              [49.00, 98.00, 146.83, 174.61], [55.00, 110.0, 138.59, 164.81]]
+
+    default_bpm, chords = MOOD_CHORDS.get(mood, MOOD_CHORDS["dark_thriller"])
+    bpm = bpm or default_bpm
+
     pad_l, pad_r = np.zeros(n), np.zeros(n)
     seg_len = 6.0
     for si in range(int(math.ceil(total_dur / seg_len))):
@@ -36,7 +74,7 @@ def generate_cinematic_bgm_and_sfx(total_dur, sfx_events, out_wav, seed=77, bpm=
         env[:fade] = np.linspace(0, 1, fade)
         env[-fade:] = np.linspace(1, 0, fade)
         sl, sr_ = np.zeros(s1 - s0), np.zeros(s1 - s0)
-        for fi, f0 in enumerate(chords[si % 4]):
+        for fi, f0 in enumerate(chords[si % len(chords)]):
             vib = 1.0 + 0.003 * np.sin(2 * np.pi * (0.35 + fi * 0.1) * ts)
             pl = 2 * np.pi * np.cumsum(f0 * vib) / sr
             pr = 2 * np.pi * np.cumsum(f0 * 1.003 * vib) / sr
@@ -45,19 +83,21 @@ def generate_cinematic_bgm_and_sfx(total_dur, sfx_events, out_wav, seed=77, bpm=
             sr_ += (np.sin(pr) + 0.45 * np.sin(2 * pr) + 0.22 * np.sin(3 * pr)) * w
         pad_l[s0:s1] += sl * env
         pad_r[s0:s1] += sr_ * env
-    pad_l, pad_r = _lp(pad_l, 520, sr), _lp(pad_r, 520, sr)
+    lp_cut = 780 if mood == "emotional_drama" else 520
+    pad_l, pad_r = _lp(pad_l, lp_cut, sr), _lp(pad_r, lp_cut, sr)
 
     pulse = np.zeros(n)
-    for idx, pt in enumerate(np.arange(0.0, total_dur, 60.0 / bpm / 2.0)):
-        s0, s1 = int(pt * sr), min(n, int(pt * sr) + int(0.19 * sr))
-        if s1 <= s0:
-            continue
-        tp = np.arange(s1 - s0) / sr
-        acc = 1.0 if idx % 4 == 0 else (0.65 if idx % 2 == 0 else 0.42)
-        inten = 0.55 + 0.45 * (pt / max(total_dur, 1.0))
-        fb = 55.0 if (int(pt / 6.0) % 4 != 1) else 58.27
-        pulse[s0:s1] += (np.sin(2 * np.pi * fb * tp) + 0.5 * np.sin(2 * np.pi * fb * 2 * tp)) * np.exp(-tp * 14.0) * acc * inten * 0.55
-    pulse = _lp(pulse, 260, sr, 2)
+    if mood != "emotional_drama":
+        for idx, pt in enumerate(np.arange(0.0, total_dur, 60.0 / bpm / 2.0)):
+            s0, s1 = int(pt * sr), min(n, int(pt * sr) + int(0.19 * sr))
+            if s1 <= s0:
+                continue
+            tp = np.arange(s1 - s0) / sr
+            acc = 1.0 if idx % 4 == 0 else (0.65 if idx % 2 == 0 else 0.42)
+            inten = 0.55 + 0.45 * (pt / max(total_dur, 1.0))
+            fb = chords[int(pt / 6.0) % len(chords)][0] * 0.75
+            pulse[s0:s1] += (np.sin(2 * np.pi * fb * tp) + 0.5 * np.sin(2 * np.pi * fb * 2 * tp)) * np.exp(-tp * 14.0) * acc * inten * 0.55
+        pulse = _lp(pulse, 260, sr, 2)
 
     sfx_l, sfx_r = np.zeros(n), np.zeros(n)
     for ev_t, kind in sfx_events:
@@ -81,6 +121,25 @@ def generate_cinematic_bgm_and_sfx(total_dur, sfx_events, out_wav, seed=77, bpm=
             ph = 2 * np.pi * np.cumsum(120.0 * (3.2 ** pr_)) / sr
             rise = np.sin(ph) * (pr_ ** 2.2) * 0.35 + _bp(rng.standard_normal(s1 - s0), 400, 3500, sr) * (pr_ ** 2.0) * 0.35
             sfx_l[s0:s1] += rise; sfx_r[s0:s1] += rise
+        elif kind == "heartbeat":
+            for dt in (0.0, 0.24):
+                s0 = max(0, int((ev_t + dt) * sr)); s1 = min(n, s0 + int(0.18 * sr))
+                if s1 <= s0: continue
+                tb = np.arange(s1 - s0) / sr
+                hb = np.sin(2 * np.pi * 52.0 * tb) * np.exp(-tb * 22.0) * 0.75
+                sfx_l[s0:s1] += hb; sfx_r[s0:s1] += hb
+        elif kind == "glitch_hit":
+            s0 = max(0, int(ev_t * sr)); s1 = min(n, s0 + int(0.18 * sr))
+            if s1 <= s0: continue
+            tb = np.arange(s1 - s0) / sr
+            gl = _bp(rng.standard_normal(s1 - s0), 1200, 5500, sr) * np.exp(-tb * 24.0) * 0.6
+            sfx_l[s0:s1] += gl; sfx_r[s0:s1] += gl
+        elif kind == "bell_reveal":
+            s0 = max(0, int(ev_t * sr)); s1 = min(n, s0 + int(1.6 * sr))
+            if s1 <= s0: continue
+            tb = np.arange(s1 - s0) / sr
+            bell = (np.sin(2 * np.pi * 587.33 * tb) + 0.4 * np.sin(2 * np.pi * 1174.66 * tb)) * np.exp(-tb * 2.5) * 0.45
+            sfx_l[s0:s1] += bell; sfx_r[s0:s1] += bell
 
     ml = pad_l * 0.42 + pulse * 0.50 + sfx_l * 0.65
     mr = pad_r * 0.42 + pulse * 0.50 + sfx_r * 0.65

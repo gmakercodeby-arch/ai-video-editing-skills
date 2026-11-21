@@ -170,6 +170,19 @@ This pipeline adapts automatically to your hardware. Even a standard laptop runs
 
 ---
 
+## 🎨 Ready-Made Pro Templates & 🎵 Copyright-Free Audio Library (`pro-recap-templates-audio`)
+- **4 Pre-Made Transparent Cinema Templates (`templates/` + `pipeline/template_kit.py`):** Just overlay & drop your Hindi title/hook via `libass`!
+  - `template_dark_gold.png` (9:16 Mystery / Thriller)
+  - `template_crimson_horror.png` (9:16 Horror / Zombie / Monster)
+  - `template_cyan_scifi.png` (9:16 Sci-Fi / Cyberpunk HUD)
+  - `template_cinema_16x9.png` (16:9 Long-Form Filmy Nest matte-black bar)
+- **100% Copyright-Free Procedural 48kHz Audio Engine (`pipeline/music_kit.py`):**
+  - **4 BGM Moods:** `dark_thriller`, `horror_suspense`, `emotional_drama`, `action_hype`
+  - **6 Designed SFX:** `boom`, `whoosh`, `riser`, `heartbeat`, `glitch_hit`, `bell_reveal`
+- **Curated Stock Audio & Open-Source Best Practices:** Includes verified free audio sources (YouTube Audio Library, Pixabay, Mixkit, Freesound CC0, Incompetech) + distilled patterns from `NarratoAI`, `ClipsAI`, `Remotion Shorts`, and `MoneyPrinterTurbo`.
+
+---
+
 ## 📁 Repository Structure
 
 ```text
@@ -187,14 +200,17 @@ ai-video-editing-skills/
 │   ├── music_kit.py                      # Background music mixing & ducking
 │   ├── send_telegram.py                  # Automated Telegram delivery
 │   ├── youtube_upload.py                 # Official YouTube Data API v3 uploader
+│   ├── template_kit.py                   # 4 ready-made 9:16 & 16:9 cinema templates
 │   └── example_build_short.py            # End-to-end sample short builder
 │
-└── 🧠 skills/                            # 5 Antigravity Global Skills
+├── 🎨 templates/                         # Pre-made 9:16 & 16:9 transparent PNG templates
+└── 🧠 skills/                            # 6 Antigravity Global Skills
     ├── viral-shorts-mastery/             # 1080×1920 Viral Hindi Recap Shorts
     ├── long-form-movie-recap/            # 1920×1080 Long-Form Movie Explained
     ├── ffmpeg-video-qa-engine/           # Post-Render QA & EBUR128 Inspector
     ├── video-use/                        # General Conversational Video Editing
-    └── youtube-auto-uploader/            # YouTube Data API v3 Upload & SEO Skill
+    ├── youtube-auto-uploader/            # YouTube Data API v3 Upload & SEO Skill
+    └── pro-recap-templates-audio/        # Templates, 4-Mood Audio Lab & Open-Source Recipes
 ```
 
 ---
