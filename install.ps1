@@ -28,7 +28,8 @@ Check-Tool "git" "Git.Git" | Out-Null
 Write-Host "`n--- Hardware / GPU Scan ---" -ForegroundColor Cyan
 $gpu = Get-Command nvidia-smi -ErrorAction SilentlyContinue
 if ($gpu) {
-    nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
+    nvidia-smi --query-gpu=name,memory.total,compute_cap --format=csv,noheader
+    Write-Host "[INFO] Note: PyTorch CUDA acceleration for OmniVoice requires 6GB+ VRAM and Compute Capability >= 7.0 (GTX 16xx / RTX series)." -ForegroundColor DarkCyan
 } else {
     Write-Host "[INFO] No NVIDIA GPU detected (CPU mode works great with edge-tts!)." -ForegroundColor Yellow
 }

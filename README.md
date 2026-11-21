@@ -34,6 +34,23 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 
 ---
 
+## 💻 System Requirements (Minimum vs Recommended)
+
+This pipeline adapts to the user's PC! Even a basic laptop can run the full video editing + `edge-tts` pipeline, while a **6 GB+ CUDA GPU** unlocks **15×–30× faster** local **OmniVoice** voice cloning.
+
+| Component | Minimum (`edge-tts` Cloud Voice Mode) | Recommended (Fast Local `OmniVoice` Cloning) |
+|---|---|---|
+| **OS** | Windows 10 / 11 (64-bit) | Windows 11 (64-bit) |
+| **CPU** | 4-Core Intel i5 / Ryzen 5 | 6-Core+ Intel i5 (11th Gen+) / Ryzen 5 5600+ |
+| **RAM** | **8 GB** | **16 GB+** |
+| **GPU** | Integrated / Any CPU (no GPU needed) | **NVIDIA GTX 1660 SUPER (6 GB) / RTX 3060 (12 GB)** (`CUDA sm_70+`, **6 GB+ VRAM**) |
+| **Disk Space** | **~2 GB free** (+ space for your movies) | **~8–10 GB free** (OmniVoice + Whisper models + cache) |
+| **Internet** | Required for `yt-dlp` & `edge-tts` | Optional once models are cached |
+
+> **Note on Older GPUs (e.g., GTX 960M / `sm_50`):** Modern PyTorch (`cu128`) requires CUDA Compute Capability **`7.0+`** (GTX 16-series / RTX 20/30/40-series). On older GPUs, OmniVoice automatically falls back to CPU (slower) — use `edge-tts` mode for fast 1–2 min renders!
+
+---
+
 ## 📁 Repository Structure
 ```text
 ├── install.ps1                  # Smart PC-scanning installer
