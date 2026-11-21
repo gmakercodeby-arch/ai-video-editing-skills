@@ -8,6 +8,7 @@ __pycache__/
 *.m4a
 *.jpg
 *.png
+!assets/logo.png
 *.ass
 *.json
 .env

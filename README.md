@@ -3,6 +3,9 @@
 <!-- Animated Wave Header Banner -->
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,45:0f4c5c,100:e36414&height=230&section=header&text=AI%20Video%20Editing%20Skills&fontSize=44&fontColor=ffffff&fontAlignY=38&desc=Viral%20Hindi%20Recap%20%26%20Production%20V3%20Pipeline&descAlignY=62&descSize=18&animation=fadeIn" alt="AI Video Editing Skills Banner" />
 
+<!-- Repo Logo -->
+<img src="assets/logo.png" width="140" alt="AI Video Editing Skills Logo" />
+
 <!-- Animated Typing Tagline -->
 <a href="https://github.com/gmakercodeby-arch/ai-video-editing-skills">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=19&duration=2800&pause=900&color=00E5FF&center=true&vCenter=true&width=760&lines=Viral+Hindi+Movie+Recap+Shorts+(1080x1920+%40+30fps);Long-Form+Movie+Explained+(1080p+Full+HD+%7C+12-22+mins);Zero-Bypass+Whisper+Audio+Guard+%2B+PySceneDetect+Cuts;HarfBuzz+Devanagari+Captions+%2B+EBUR128+Post-Render+QA" alt="Typing SVG" />
