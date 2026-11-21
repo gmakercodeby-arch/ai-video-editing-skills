@@ -201,6 +201,20 @@ ai-video-editing-skills/
 
 <div align="center">
 
+---
+
+## 🔍 Search Keywords & Use Cases (Google / GitHub / AI Agents)
+- **AI Video Editing Skills** for **Antigravity IDE**, **Claude Code**, and automated **FFmpeg** pipelines
+- **Hindi Movie Recap Shorts Generator** (`1080x1920`, **YouTube Shorts** & **Instagram Reels** automation)
+- **Long-Form Movie Explained Automation** (`1920x1080`, Filmy Nest / ZN Explain style 4-Act structure)
+- **Zero-Shot Hindi Voice Cloning** with **OmniVoice** + **`edge-tts`** + **`faster-whisper`** similarity QA guard
+- **Devanagari / Hindi ASS Subtitles** with **libass / HarfBuzz** (`Spacing=0`) & **PySceneDetect** word-synced cuts
+- **YouTube Auto-Uploader** using official **YouTube Data API v3** with Hinglish CTR titles & custom thumbnails
+
+---
+
+<div align="center">
+
 ### ⭐ If this pipeline saves you editing hours, drop a star on the repo!
 
 <a href="https://github.com/gmakercodeby-arch/ai-video-editing-skills/stargazers">
