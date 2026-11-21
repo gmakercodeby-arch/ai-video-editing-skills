@@ -1,10 +1,9 @@
 <div align="center">
 
-<!-- Animated Wave Header Banner -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,45:0f4c5c,100:e36414&height=230&section=header&text=AI%20Video%20Editing%20Skills&fontSize=44&fontColor=ffffff&fontAlignY=38&desc=Viral%20Hindi%20Recap%20%26%20Production%20V3%20Pipeline&descAlignY=62&descSize=18&animation=fadeIn" alt="AI Video Editing Skills Banner" />
+<!-- Local Studio Banner (Zero External Dependency) -->
+<img width="100%" src="assets/banner.png" alt="AI Video Editing Skills Banner" />
 
-<!-- Repo Logo -->
-<img src="assets/logo.png" width="140" alt="AI Video Editing Skills Logo" />
+<br/><br/>
 
 <!-- Animated Typing Tagline -->
 <a href="https://github.com/gmakercodeby-arch/ai-video-editing-skills">
@@ -208,6 +207,6 @@ ai-video-editing-skills/
   <img src="https://img.shields.io/badge/Star%20This%20Repo-FF4B2B?style=for-the-badge&logo=github&logoColor=white" alt="Star Repo" />
 </a>
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:e36414,55:0f4c5c,100:0d1117&height=115&section=footer" alt="Footer Wave" />
+
 
 </div>
