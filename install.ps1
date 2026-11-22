@@ -47,7 +47,7 @@ Write-Host "[OK] Python packages installed in .venv" -ForegroundColor Green
 $skillsTarget = Join-Path $env:USERPROFILE ".gemini\config\skills"
 New-Item -ItemType Directory -Force -Path $skillsTarget | Out-Null
 Copy-Item -Path "skills\*" -Destination $skillsTarget -Recurse -Force
-Write-Host "[OK] All 8 video skills installed to $skillsTarget" -ForegroundColor Green
+Write-Host "[OK] All 9 video skills installed to $skillsTarget" -ForegroundColor Green
 
 # 5. Optional OmniVoice Voice Cloning Setup
 Write-Host "`n--- Optional: Voice Cloning (OmniVoice) ---" -ForegroundColor Cyan

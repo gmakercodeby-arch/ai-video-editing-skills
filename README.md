@@ -132,7 +132,7 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 - 🔎 **Scans your PC** for `python`, `ffmpeg`, `git`, and NVIDIA GPU hardware.
 - ⏭️ **Skips existing tools** already present in PATH.
 - 📦 **Builds an isolated `.venv`** with all required Python dependencies.
-- 🧩 **Installs all 8 skills** directly into `~/.gemini/config/skills/`.
+- 🧩 **Installs all 9 skills** directly into `~/.gemini/config/skills/`.
 - 🎙️ **Voice engine choice:** Optionally sets up local zero-shot **OmniVoice** cloning, or defaults to fast cloud **`edge-tts`**.
 
 ---
@@ -210,11 +210,12 @@ ai-video-editing-skills/
 │   ├── smart_editor.py                   # 1-command auto-editor for ANY user video (vlogs/tutorials)
 │   ├── send_telegram.py                  # Automated Telegram delivery
 │   ├── youtube_upload.py                 # Official YouTube Data API v3 uploader
+│   ├── instagram_upload.py               # Official Meta Instagram Graph API Reels uploader
 │   ├── template_kit.py                   # 4 ready-made 9:16 & 16:9 cinema templates
 │   └── example_build_short.py            # End-to-end sample short builder
 │
 ├── 🎨 templates/                         # Pre-made 9:16 & 16:9 transparent PNG templates
-└── 🧠 skills/                            # 8 Antigravity Global Skills
+└── 🧠 skills/                            # 9 Antigravity Global Skills
     ├── viral-shorts-mastery/             # 1080×1920 Viral Hindi Recap Shorts
     ├── long-form-movie-recap/            # 1920×1080 Long-Form Movie Explained
     ├── ffmpeg-video-qa-engine/           # Post-Render QA & EBUR128 Inspector
@@ -222,7 +223,8 @@ ai-video-editing-skills/
     ├── youtube-auto-uploader/            # YouTube Data API v3 Upload & SEO Skill
     ├── pro-recap-templates-audio/        # Templates, 120+ Audio Lab & Open-Source Recipes
     ├── hyperframes-motion-bridge/        # HTML/CSS/GSAP Motion Graphics + HyperFrames Contract
-    └── free-style-cloner/                # Zero-Paywall Reference Style Cloner & Pre-Render Linter
+    ├── free-style-cloner/                # Zero-Paywall Reference Style Cloner & Pre-Render Linter
+    └── ai-story-reel-generator/          # 3D AI Character Stories (Sheru & Aloo Style) + Auto Instagram
 ```
 
 ---
