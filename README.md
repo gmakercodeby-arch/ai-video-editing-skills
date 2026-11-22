@@ -112,6 +112,9 @@ flowchart LR
 | ✍️ **HarfBuzz Devanagari Overlays** | `pipeline/overlay_kit.py` | Renders all Hindi banner hooks & pop captions via `libass` (`Spacing=0`) — **zero broken matras!** |
 | 🔒 **Copyright Shield** | Integrated in Render Pipeline | Mutes original audio, smart `hflip` (skips readable clocks/signs), `<= 4.45s` max cut length, `1.03x` speed shift, Cold Teal LUT, micro-sharpening, and subtle film grain. |
 | 📊 **Post-Render Video QA** | `skills/ffmpeg-video-qa-engine/scripts/qa_inspect_video.py` | Auto-generates `qa_banner_zoom.png`, 3×3 storyboard grid, EBUR128 loudness (`-14 LUFS`), and Whisper similarity report. |
+| 🚦 **Pre-Render Contract Linter** | `pipeline/project_linter.py` | Audits manifests, frame-exact timestamps (`floor(frame/fps)`), ASS Devanagari `Spacing=0`, 80% title-safe margins, A/V drift, and HTML motion contracts BEFORE rendering (with exact `Fix:` lines). |
+| 🧬 **100% Free Style Cloner** | `pipeline/style_cloner.py` | Analyzes any reference video's frame-exact cuts, pacing cadence, color mood (auto-builds FFmpeg grade), EBUR128 loudness, and 3×3 storyboard locally — zero \$25/mo paywall. |
+| 🎞️ **HTML/GSAP Motion Bridge** | `pipeline/html_motion.py` | Generates editable After Effects-style motion cards (`glass_hook`, `vox_newspaper`, `stat_counter`, `kinetic_title`) using the open-source HyperFrames HTML contract with dual HyperFrames CLI / FFmpeg rendering. |
 
 ---
 
@@ -129,7 +132,7 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 - 🔎 **Scans your PC** for `python`, `ffmpeg`, `git`, and NVIDIA GPU hardware.
 - ⏭️ **Skips existing tools** already present in PATH.
 - 📦 **Builds an isolated `.venv`** with all required Python dependencies.
-- 🧩 **Installs all 4 skills** directly into `~/.gemini/config/skills/`.
+- 🧩 **Installs all 8 skills** directly into `~/.gemini/config/skills/`.
 - 🎙️ **Voice engine choice:** Optionally sets up local zero-shot **OmniVoice** cloning, or defaults to fast cloud **`edge-tts`**.
 
 ---
@@ -201,6 +204,9 @@ ai-video-editing-skills/
 │   ├── music_kit.py                      # Background music mixing & ducking
 │   ├── audio_lab.py                      # 120+ copyright-free BGM (60) & SFX (60) generator
 │   ├── motion_gfx.py                     # Animated lower-thirds & stat counters (cubic easing)
+│   ├── html_motion.py                    # Free HTML/CSS/GSAP motion cards + HyperFrames CLI bridge
+│   ├── style_cloner.py                   # 100% Free reference video pacing, color & LUFS analyzer
+│   ├── project_linter.py                 # Pre-render contract linter (safe zones, frame math, ASS)
 │   ├── smart_editor.py                   # 1-command auto-editor for ANY user video (vlogs/tutorials)
 │   ├── send_telegram.py                  # Automated Telegram delivery
 │   ├── youtube_upload.py                 # Official YouTube Data API v3 uploader
@@ -208,13 +214,15 @@ ai-video-editing-skills/
 │   └── example_build_short.py            # End-to-end sample short builder
 │
 ├── 🎨 templates/                         # Pre-made 9:16 & 16:9 transparent PNG templates
-└── 🧠 skills/                            # 6 Antigravity Global Skills
+└── 🧠 skills/                            # 8 Antigravity Global Skills
     ├── viral-shorts-mastery/             # 1080×1920 Viral Hindi Recap Shorts
     ├── long-form-movie-recap/            # 1920×1080 Long-Form Movie Explained
     ├── ffmpeg-video-qa-engine/           # Post-Render QA & EBUR128 Inspector
     ├── video-use/                        # General Conversational Video Editing
     ├── youtube-auto-uploader/            # YouTube Data API v3 Upload & SEO Skill
-    └── pro-recap-templates-audio/        # Templates, 4-Mood Audio Lab & Open-Source Recipes
+    ├── pro-recap-templates-audio/        # Templates, 120+ Audio Lab & Open-Source Recipes
+    ├── hyperframes-motion-bridge/        # HTML/CSS/GSAP Motion Graphics + HyperFrames Contract
+    └── free-style-cloner/                # Zero-Paywall Reference Style Cloner & Pre-Render Linter
 ```
 
 ---
@@ -230,6 +238,8 @@ ai-video-editing-skills/
 - **Zero-Shot Hindi Voice Cloning** with **OmniVoice** + **`edge-tts`** + **`faster-whisper`** similarity QA guard
 - **Devanagari / Hindi ASS Subtitles** with **libass / HarfBuzz** (`Spacing=0`) & **PySceneDetect** word-synced cuts
 - **YouTube Auto-Uploader** using official **YouTube Data API v3** with Hinglish CTR titles & custom thumbnails
+- **Free HyperFrames HTML/CSS/GSAP Motion Bridge** (`html_motion.py`) for After Effects-grade intros, Vox newspaper highlights, animated stat counters & kinetic titles
+- **Zero-Paywall Reference Style Cloner** (`style_cloner.py`) + **Pre-Render Video Contract Linter** (`project_linter.py`) for frame-exact cut rhythm, color grading, and 80% safe-zone checks
 
 ---
 
